@@ -1,10 +1,12 @@
 package business
-import entity.Convite
+import entity.Guest
 
-class BusinessConvite {
+class BusinessGuest {
     fun validateType(type: String) = (type == "comum" || type == "premium" || type == "luxo")
 
-    fun validateCode(convite: Convite) = when(convite.type){
+    fun isSub18(age: Int) = age >= 18
+
+    fun validateCode(convite: Guest) = when(convite.type){
         "comum" -> convite.code.startsWith("xt")
         "premium", "luxo" -> convite.code.startsWith("xl")
         else -> false
